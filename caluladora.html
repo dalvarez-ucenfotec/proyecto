@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Campañas</title>
+    <link rel="stylesheet" href="css/tour.css">
+    <link rel="icon" href="imagenes/favicon.png">   
+    <style>
+
+    </style>
+</head>
+<body class="centrado-texto">
+    <video autoplay muted loop id="bg-video">
+        <source src="videos/video1.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+    </video>
+    <header class="toolbar">
+        <a href="landing.html" class="btn small">← Volver</a>
+        <h2>Calculadora de Campañas</h2>
+    </header>
+
+    <h2 class="bajar2">Calculadora de Precios de Campaña de Marketing</h2>
+
+    <form id="form-campana" class="bajar2">
+        <label for="dias">¿Cuántos días durará la campaña?</label><br>
+        <input type="number" id="dias" name="dias" min="1" required class="bajar2"><br>
+
+        <label>Seleccione las redes sociales:</label><br>
+        <input type="checkbox" name="red" value="facebook" id="facebook"> Facebook<br>
+        <input type="checkbox" name="red" value="instagram" id="instagram"> Instagram<br>
+        <input type="checkbox" name="red" value="tiktok" id="tiktok"> TikTok<br>
+
+        <input type="submit" value="Calcular precio" class="btn">
+    </form>
+
+    <div id="resultado" class="bajar2"></div>
+
+    <script>
+    document.getElementById("form-campana").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const dias = parseInt(document.getElementById("dias").value);
+        const baseDia = 30000;
+        let totalPorDia = baseDia;
+
+        let desglose = [`Base por día: ₡${baseDia.toLocaleString()}`];
+        const redesSeleccionadas = Array.from(document.querySelectorAll("input[name='red']:checked"))
+                                        .map(el => el.value);
+
+        if (redesSeleccionadas.includes("facebook")) {
+            totalPorDia += 15000;
+            desglose.push(`Facebook: ₡15,000`);
+        }
+        if (redesSeleccionadas.includes("instagram")) {
+            totalPorDia += 20000;
+            desglose.push(`Instagram: ₡20,000`);
+        }
+        if (redesSeleccionadas.includes("tiktok")) {
+            totalPorDia += 30000;
+            desglose.push(`TikTok: ₡30,000`);
+        }
+
+        const total = dias * totalPorDia;
+
+        document.getElementById("resultado").innerHTML = `
+            <p>Redes seleccionadas: ${redesSeleccionadas.join(", ") || "ninguna"}</p>
+            <p>Total por día: ₡${totalPorDia.toLocaleString()}</p>
+            <p><strong>Desglose:</strong><br>${desglose.join("<br>")}</p>
+            <p>Total por ${dias} día(s): <strong>₡${total.toLocaleString()}</strong></p>`;
+    });
+    </script>
+
+
+
+</body>
+</html>

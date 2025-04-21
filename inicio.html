@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<body lang="es">
+    <head>
+        <title>Interfaz Web</title>
+        <meta charset="utf-8"   />
+        <link href="imagenes/favicon.png" rel="icon">
+        <link href="css/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/tour.css" /> 
+    </head>
+    
+    <body>
+    <!-- Barra de navegación -->
+    <header class="toolbar">
+        <a href="landing.html" class="btn small">← Volver</a>
+        <h2>Inicio</h2>
+    </header>
+        <header>
+            <!-- video mp4-->
+            <div class="configvideo">
+                <video height="550" width="100%" autoplay="" loop="" muted="muted">
+                    <source src="videos/video2.mp4" type="video/mp4">
+                </video>
+            </div>
+        </header>
+
+        <section id="sobre">
+            <h3 class="centrado bajar2">Sobre Nosotros</h3>
+            <p>
+                En BoomBrand, nacimos con una misión clara: llevar marcas al siguiente nivel a través de estrategias de marketing innovadoras y resultados explosivos. Con un equipo apasionado por la creatividad y la tecnología, combinamos datos, tendencias y storytelling para conectar marcas con su audiencia de manera auténtica y efectiva.
+
+                Desde nuestros inicios, hemos trabajado con empresas de distintos sectores, ayudándolas a destacarse en un mundo digital en constante evolución. Nuestra filosofía es simple: impacto, creatividad y crecimiento.
+                
+            </p>
+           
+        </section>
+
+<section id="menu-servicios" class="centrado">
+    <h3 class="centrado bajar2">Explora Nuestros Servicios</h3>
+    <select id="servicio" class="bajar2">
+        <option value="">Seleccione un servicio</option>
+        <option value="1">Branding & Identidad</option>
+        <option value="2">Marketing Digital</option>
+        <option value="3">Diseño Web</option>
+        <option value="4">SEO & Posicionamiento</option>
+    </select>
+
+    <div id="output-img" class="bajar2"></div>
+    <div id="output-txt"></div>
+</section>
+
+<script src="js/servicios.js"></script>
+
+
+
+      
+
+        <section id="formulario" class="centrado">
+            <h3 class="centrado bajar2">Contáctanos</h3>
+            <form id="formularioContacto">
+                <input type="text" name="user_name" placeholder="Nombre" required class="bajar2"><br>
+                <input type="email" name="user_email" placeholder="Correo Electrónico" required class="bajar2"><br>
+                <textarea name="message" placeholder="Mensaje" rows="4" required class="bajar2"></textarea><br>
+                <input type="submit" value="Enviar" class="btn">
+            </form>
+            <div id="popup" class="popup hidden">
+                <p id="popup-message"></p>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script>
+            (function(){
+                emailjs.init("K9hH2yQfzCN_PVl7U");
+            })();
+
+            document.getElementById("formularioContacto").addEventListener("submit", function(e) {
+                e.preventDefault();
+                emailjs.sendForm('service_dqv0e3o', 'template_i213k4c', this)
+                    .then(function() {
+                        const popup = document.getElementById("popup");
+                        const popupMsg = document.getElementById("popup-message");
+
+                        popupMsg.textContent = "¡Mensaje enviado correctamente!";
+                        popup.classList.remove("hidden");
+                        setTimeout(() => popup.classList.add("hidden"), 4000);
+                    }, function(error) {
+                        const popup = document.getElementById("popup");
+                        const popupMsg = document.getElementById("popup-message");
+
+                        popupMsg.textContent = "Error al enviar el mensaje. Inténtalo de nuevo.";
+                        popup.classList.remove("hidden");
+                        setTimeout(() => popup.classList.add("hidden"), 4000);
+                        console.error("EmailJS error:", error);
+                    });
+                this.reset();
+            });
+        </script>
+
+        <style>
+
+</style>
+
+        <section id="ubicacion" class="centrado">
+            <h2></h2>
+            <h3 class="centrado bajar2">Conócenos</h3>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.456225272664!2d-84.08931758481113!3d9.933242992905168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fae54b3c5bb3%3A0x7b2c72e6dc31c5e2!2sParque%20Central%2C%20San%20Jos%C3%A9!5e0!3m2!1ses!2scr!4v1713712356450!5m2!1ses!2scr"
+                width="60%"
+                height="300"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+
+        <div class="bajar2"></div>
+
+        <footer class="centrado">
+            <h3 class="centrado formatospie">Derechos Reservados</h3>
+        </footer>
+
+</body>
+</body>
+
+
+

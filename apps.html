@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tour Virtual 36</title>
+  <link href="imagenes/favicon.png" rel="icon">
+  <!-- Pannellum – visor panorámico -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <link rel="stylesheet" href="css/tour.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <a href="landing.html" class="btn small">← Volver</a>
+    <h2>Aplicacion: Conozca a nuestros Clientes</h2>
+  </header>
+
+  <!-- Contenedor del visor -->
+  <div id="panorama"></div>
+
+  <!-- Modal para mostrar contenido de hotspots -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModal" class="btn close">×</button>
+  
+      <h3 id="modalTitle" class="mb-2"></h3>
+      <p id="modalDesc"  class="mb-3"></p>
+  
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/tour.js"></script>
+</body>
+</html>
