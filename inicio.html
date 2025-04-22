@@ -47,6 +47,30 @@
            
         </section>
 
+<section id="galeria" class="centrado bajar2">
+    <div id="carousel" style="position: relative; width: 60%; margin: 0 auto;">
+        <img id="carousel-image" src="imagenes/img1.jpg" alt="Imagen de galería" style="width: 100%; border-radius: 8px;">
+        <button onclick="cambiarImagen(-1)" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%);" class="btn small">←</button>
+        <button onclick="cambiarImagen(1)" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%);" class="btn small">→</button>
+    </div>
+</section>
+
+<script>
+    const imagenes = [
+        'imagenes/img1.jpg',
+        'imagenes/img2.jpg',
+        'imagenes/img3.jpg',
+        'imagenes/img4.jpg',
+        'imagenes/img5.jpg'
+    ];
+    let indiceActual = 0;
+
+    function cambiarImagen(direccion) {
+        indiceActual = (indiceActual + direccion + imagenes.length) % imagenes.length;
+        document.getElementById("carousel-image").src = imagenes[indiceActual];
+    }
+</script>
+
 <section id="menu-servicios" class="centrado">
     <h3 class="centrado bajar2">Explora Nuestros Servicios</h3>
     <select id="servicio" class="bajar2">
