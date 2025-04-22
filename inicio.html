@@ -94,11 +94,31 @@
                     });
                 this.reset();
             });
+
+            document.getElementById("formularioSuscripcion").addEventListener("submit", function(e) {
+                e.preventDefault();
+                emailjs.sendForm('service_dqv0e3o', 'template_i213k4c', this)
+                    .then(function() {
+                        const popup = document.getElementById("popup-suscripcion");
+                        const popupMsg = document.getElementById("popup-message-suscripcion");
+
+                        popupMsg.textContent = "¡Te has suscrito correctamente!";
+                        popup.classList.remove("hidden");
+                        setTimeout(() => popup.classList.add("hidden"), 4000);
+                    }, function(error) {
+                        const popup = document.getElementById("popup-suscripcion");
+                        const popupMsg = document.getElementById("popup-message-suscripcion");
+
+                        popupMsg.textContent = "Error al suscribirte. Inténtalo de nuevo.";
+                        popup.classList.remove("hidden");
+                        setTimeout(() => popup.classList.add("hidden"), 4000);
+                        console.error("EmailJS error:", error);
+                    });
+                this.reset();
+            });
         </script>
 
-        <style>
 
-</style>
 
         <section id="ubicacion" class="centrado">
             <h2></h2>
@@ -112,16 +132,27 @@
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
+            <div class="social-links bajar2">
+                <a href="https://www.facebook.com" target="_blank" class="btn small">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank" class="btn small">Instagram</a>
+                <a href="https://www.tiktok.com" target="_blank" class="btn small">TikTok</a>
+            </div>
         </section>
 
         <div class="bajar2"></div>
+
+        <section id="suscripcion" class="centrado">
+    <h3 class="centrado bajar2">Suscríbete a nuestras novedades</h3>
+    <form id="formularioSuscripcion">
+        <input type="email" name="user_email" placeholder="Tu correo electrónico" required class="bajar2"><br>
+        <input type="submit" value="Suscribirme" class="btn small">
+    </form>
+</section>
 
         <footer class="centrado">
             <h3 class="centrado formatospie">Derechos Reservados</h3>
         </footer>
 
+        
+
 </body>
-</body>
-
-
-

@@ -166,3 +166,14 @@ iframe.pdf{
   90% { opacity: 1; }
   100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
 }
+
+
+
+.social-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+}
