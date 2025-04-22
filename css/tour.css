@@ -177,3 +177,10 @@ iframe.pdf{
 .social-links a {
     margin: 0 0.5rem;
 }
+
+.contact-info {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
